@@ -23,6 +23,7 @@ script:
 before_deploy:
 - "chmod +x before_deploy.sh"
 - ./before_deploy.sh
+- "echo ${TRAVIS_DIST}"
 deploy:
    provider: script
    skip_cleanup: true
