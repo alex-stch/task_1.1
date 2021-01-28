@@ -22,8 +22,9 @@ script:
 - cmake --build . --target test
 - cmake --build . --target package
 before_deploy:
-- "pwd && chmod +x before_deploy.sh"
+- "pwd && ls -al && chmod +x before_deploy.sh && ls -al"
 - ./before_deploy.sh
+- "cat pkg_create.json && rm -rf pkg_create.json"
 deploy:
    provider: script
    skip_cleanup: true
