@@ -14,7 +14,6 @@ before_script:
 - sudo make install
 - sudo ldconfig
 - echo "finish prepare"
-- sudo apt-get update -qq
 - popd
 script:
 - cmake .
