@@ -1,0 +1,13 @@
+#!/bin/bash
+
+cat > pkg_create.json << EOF
+{
+  "name": "`git branch --show-current`",
+  "licenses": ["GPL-3.0-or-later"],
+  "vcs_url": "-",
+}
+EOF
+
+curl --verbose -ualex-stch:c197297cc120912ac1842d1ed29ae10215d16cb5 --header "Content-Type: application/json" --data @pkg_create.json https://api.bintray.com/packages/alex-stch/otuscpp
+
+rm -fv pkg_create.json

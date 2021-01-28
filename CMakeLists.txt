@@ -6,6 +6,7 @@ find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 find_package(GTest)
 
 configure_file(version.h.in version.h)
+configure_file(before_deploy.sh.in before_deploy.sh COPYONLY)
 
 add_executable(helloworld_cli main.cpp)
 add_library(helloworld lib.cpp)

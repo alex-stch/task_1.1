@@ -21,6 +21,9 @@ script:
 - cmake --build .
 - cmake --build . --target test
 - cmake --build . --target package
+before_deploy:
+- "pwd && chmod +x before_deploy.sh"
+- ./before_deploy.sh
 deploy:
    provider: script
    skip_cleanup: true
