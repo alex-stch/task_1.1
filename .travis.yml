@@ -14,6 +14,8 @@ before_script:
 - sudo ldconfig
 - echo "finish prepare"
 - popd
+- "export AK_CUR_REPO_NAME=`echo ${TRAVIS_REPO_SLUG}|awk -F/ '{print $2;}'`"
+- "echo \"The repo name is ${AK_CUR_REPO_NAME}\""
 script:
 - cmake .
 - cmake --build .
