@@ -15,19 +15,17 @@ before_script:
 - echo "finish prepare"
 - popd
 - "export AK_CUR_REPO_NAME=`echo ${TRAVIS_REPO_SLUG}|awk -F/ '{print $2;}'`"
-- "echo \"The repo name is ${AK_CUR_REPO_NAME}\""
 script:
 - cmake .
 - cmake --build .
 - cmake --build . --target test
 - cmake --build . --target package
 before_deploy:
+- "pwd && ls -al"
 - "chmod +x before_deploy.sh"
 - ./before_deploy.sh
 deploy:
    provider: script
    skip_cleanup: true
    script:
-   - curl -T helloworld-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -ualex-stch:$BINTRAY_API_KEY "https://api.bintray.com/content/alex-stch/otuscpp/${AK_CUR_REPO_NAME}/${TRAVIS_BUILD_NUMBER}/helloworld-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=${TRAVIS_DIST};deb_component=main;deb_architecture=amd64;publish=1"
-   on:
-      all_branches: true
+   - curl -T helloworld-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -ualex-stch:$BINTRAY_API_KEY "https://api.bintray.com/content/alex-stch/otuscpp/${AK_CUR_REPO_NAME}/${TRAVIS_BUILD_NUMBER}/${AK_CUR_REPO_NAME}-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=${TRAVIS_DIST};deb_component=main;deb_architecture=amd64;publish=1"
