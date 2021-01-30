@@ -2,7 +2,7 @@
 
 cat > pkg_create.json << EOF
 {
-  "name": "${TRAVIS_BRANCH}",
+  "name": "${AK_CUR_REPO_NAME}",
   "licenses": ["GPL-3.0-or-later"],
   "vcs_url": "-",
 }
